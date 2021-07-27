@@ -1,11 +1,12 @@
 {
   "files.exclude": {
     "node_modules": true,
-    ".vscode": true,
+    ".vscode": false,
     ".gitignore": false,
     "package.json": false,
-    "package-lock.json": true,
-    "yarn.lock": true,
-    "public": true
+    "package-lock.json": false,
+    "yarn.lock": false,
+    "public": true,
+    "src/api": true,
   }
 }
