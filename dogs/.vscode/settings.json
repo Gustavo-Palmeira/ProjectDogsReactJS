@@ -7,6 +7,6 @@
     "package-lock.json": false,
     "yarn.lock": false,
     "public": true,
-    "src/api": true,
+    "src/api": false,
   }
 }

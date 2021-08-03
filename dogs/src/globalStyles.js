@@ -1,10 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
+import { Theme } from './theme'
 
 export const GlobalStyles = createGlobalStyle`
-  --type-primary: Helvetica, Arial, sans-serif;
-  --type-secondary: 'Spectral', Georgia;
-  --color-first: #333;
-
   * {
     box-sizing: border-box;
   }
@@ -12,8 +9,8 @@ export const GlobalStyles = createGlobalStyle`
   body {
     margin: 0px;
     padding-top: 4rem;
-    color: var(---color-first);
-    font-family: var(----type-first);
+    color: ${Theme.colors.primary};
+    font-family: ${Theme.fonts.primary};
   }
 
   h1, h2, h3, h4, p {
@@ -38,8 +35,8 @@ export const GlobalStyles = createGlobalStyle`
   button, input {
     display: block;
     font-size: 1rem;
-    font-family: var(---type-first);
-    color: var(---color-first);
+    font-family: ${Theme.fonts.primary};
+    color: ${Theme.colors.primary};
   }
 
   .container {

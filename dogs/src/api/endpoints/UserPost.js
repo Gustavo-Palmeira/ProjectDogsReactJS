@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState } from 'react'
 
 const UserPost = () => {
   const [username, setUsername] = useState('')
@@ -18,32 +18,30 @@ const UserPost = () => {
         email,
       }),
     })
-    console.log(response)
-    const json = await response.json()
-    console.log(json)
+    await response.json()
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <input
-        type="text"
-        placeholder="Username"
+        type='text'
+        placeholder='Username'
         value={username}
         onChange={({ target }) => setUsername(target.value)}
       />
       <input
-        type="text"
-        placeholder="Password"
+        type='text'
+        placeholder='Password'
         value={password}
         onChange={({ target }) => setPassword(target.value)}
       />
       <input
-        type="text"
-        placeholder="Email"
+        type='text'
+        placeholder='Email'
         value={email}
         onChange={({ target }) => setEmail(target.value)}
       />
-      <button>Enviar</button>
+      <button type='button'>Enviar</button>
     </form>
   )
 }
