@@ -1,23 +1,27 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { login, userSelector } from '../../store/user/actions'
 
 import Input from '../Forms/Input'
 import Button from '../Forms/Button'
 import useForm from '../../hooks/useForm'
-import { UserContext } from '../../contexts/userContext'
 
 import { Container } from './styles'
 
 const LoginForm = () => {
+  const dispatch = useDispatch()
+  const user = useSelector(userSelector)
   const username = useForm()
   const password = useForm()
 
-  const { userLogin } = useContext(UserContext)
+  console.log(user)
 
   const handleLogin = async (event) => {
     event.preventDefault()
     if (username.validate() && password.validate()) {
-      userLogin(username.value, password.value)
+      dispatch(login(username.value, password.value))
     }
   }
 

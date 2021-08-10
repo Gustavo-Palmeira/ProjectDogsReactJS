@@ -1,0 +1,13 @@
+*.config.js
+dist
+logs
+node_modules
+temp
+*.log
+.env
+.vscode/**
+**/package-lock.json
+.prettierrc.js
+build
+Dockerfile
+src/tests/**

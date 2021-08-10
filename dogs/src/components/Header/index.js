@@ -1,13 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 import { ReactComponent as Dogs } from '../../assets/dogs.svg'
-import { UserContext } from '../../contexts/userContext'
 
 import { Container, Nav } from './styles'
 
 const Header = () => {
-  const { data } = useContext(UserContext)
+  const data = null
 
   return (
     <Container>
