@@ -5,6 +5,10 @@ const api = axios.create({
   timeout: 29000,
 })
 
+axios.defaults.headers.common = {
+  'Content-Type': 'application/json',
+}
+
 export const userLogin = async (username, password) => {
   const { data } = await api.post('/jwt-auth/v1/token', {
     username,
@@ -19,7 +23,16 @@ export const userLogin = async (username, password) => {
 }
 
 export const getUser = async (token) => {
-  return api.get('api/user', {
+  return api.get('/api/user', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+}
+
+export const tokenValidate = async (token) => {
+  return api('jwt-auth/v1/token/validate', {
+    method: 'post',
     headers: {
       Authorization: `Bearer ${token}`,
     },

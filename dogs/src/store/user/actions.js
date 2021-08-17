@@ -1,6 +1,10 @@
 export const actionsTypes = {
   LOGIN_REQUEST: '@user/LOGIN_REQUEST',
   LOGIN_SUCCESS: '@user/LOGIN_SUCCESS',
+  LOGIN_ERROR: '@user/LOGIN_ERROR',
+  TOKEN_VALIDATE: '@user/VALIDATE_TOKEN',
+  LOGOUT: '@user/LOGOUT',
+  LOGOUT_SUCCESS: '@user/LOGOUT_SUCCESS',
 }
 
 const baseSelector = (state) => state.user
@@ -13,6 +17,30 @@ export function loginSuccess(user) {
   return { type: actionsTypes.LOGIN_SUCCESS, payload: { user } }
 }
 
+export function loginError(error) {
+  return { type: actionsTypes.LOGIN_ERROR, payload: { error } }
+}
+
+export function logout() {
+  return { type: actionsTypes.LOGOUT }
+}
+
+export function logoutSuccess() {
+  return { type: actionsTypes.LOGOUT_SUCCESS }
+}
+
+export function tokenValidate(token) {
+  return { type: actionsTypes.TOKEN_VALIDATE, payload: { token } }
+}
+
 export function userSelector(state) {
   return baseSelector(state).user
+}
+
+export function loginErrorSelector(state) {
+  return baseSelector(state).error
+}
+
+export function loginLoadingSelector(state) {
+  return baseSelector(state).loading
 }
