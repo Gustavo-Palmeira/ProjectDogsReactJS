@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { userSelector, logout } from '../../store/user/actions'
 
@@ -10,9 +10,11 @@ import { Container, Nav } from './styles'
 const Header = () => {
   const dispatch = useDispatch()
   const user = useSelector(userSelector)
+  const navigate = useNavigate()
 
   const handleLogout = () => {
     dispatch(logout('logout'))
+    navigate('/login')
   }
 
   return (
