@@ -4,8 +4,8 @@ export const Theme = {
     secondary: '#fb1',
     tertiary: '#764701',
     quaternary: '#fea',
-    // quinary,
-    // senary,
+    quinary: '#667',
+    senary: '#ddd',
     // septenary,
     // octonary,
     // nonary,
@@ -13,6 +13,7 @@ export const Theme = {
     light: '#ededed',
     dark: '#121212',
     danger: '#de2c1f',
+    error: '#f31',
 
     white: '#fff',
     black: '#000',

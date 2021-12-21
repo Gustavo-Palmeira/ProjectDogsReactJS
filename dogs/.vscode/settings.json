@@ -1,12 +1,12 @@
-{
-  "files.exclude": {
-    "node_modules": true,
-    ".vscode": false,
-    ".gitignore": false,
-    "package.json": false,
-    "package-lock.json": false,
-    "yarn.lock": false,
-    "public": true,
-    "src/api": false,
-  }
-}
+// {
+//   "files.exclude": {
+//     "node_modules": true,
+//     ".vscode": false,
+//     ".gitignore": false,
+//     "package.json": false,
+//     "package-lock.json": false,
+//     "yarn.lock": false,
+//     "public": true,
+//     "src/api": false,
+//   }
+// }

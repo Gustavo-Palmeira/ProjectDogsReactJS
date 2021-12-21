@@ -1,48 +1,45 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Form, Formik } from 'formik'
 import { loginSchema } from '../../schemas/loginSchema'
 
 import {
   login,
-  loginError as setLoginError,
   loginErrorSelector,
   loginLoadingSelector,
-  // userSelector,
+  userSelector,
 } from '../../store/user/actions'
 
 import Button from '../Forms/Button'
 
-import { Container, Input, Error, Label } from './styles'
+import { Container, Input, Error, Label, Register } from './styles'
 
 const LoginForm = () => {
   const dispatch = useDispatch()
-  // const user = useSelector(userSelector)
+  const user = useSelector(userSelector)
   const loginError = useSelector(loginErrorSelector)
   const loading = useSelector(loginLoadingSelector)
   const navigate = useNavigate()
 
   const handleLogin = async ({ username, password }) => {
-    try {
-      dispatch(login(username, password))
-      navigate('/account')
-    } catch {
-      dispatch(setLoginError('Credenciais inválidas'))
-    }
+    dispatch(login(username, password))
   }
+
+  useEffect(() => {
+    if (user) navigate('/account')
+  }, [user])
 
   return (
     <Container>
-      <h1>Login</h1>
+      <h1 className='title'>Login</h1>
       <Formik
         initialValues={{ username: '', password: '' }}
         onSubmit={handleLogin}
         validationSchema={loginSchema}
       >
         {({ errors, touched }) => (
-          <Form>
+          <Form className='form'>
             <Label htmlFor='username'>Usuário</Label>
             <Input
               type='text'
@@ -63,11 +60,16 @@ const LoginForm = () => {
             ) : (
               <Button type='submit'>Entrar</Button>
             )}
-            {loginError && <p>{loginError}</p>}
+            {loginError && <Error>{loginError}</Error>}
           </Form>
         )}
       </Formik>
-      <Link to='/login/create'> Cadastrar </Link>
+      <Link className='forgot' to='/login/forgot'> Esqueceu a senha? </Link>
+      <Register>
+        <h2>Cadastre-se</h2>
+        <p>Ainda não possui conta? Cadastre-se no site</p>
+        <Link className='create' to='/login/create'> Cadastrar </Link>
+      </Register>
     </Container>
   )
 }

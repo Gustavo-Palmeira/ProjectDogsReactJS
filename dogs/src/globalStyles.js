@@ -25,6 +25,7 @@ export const GlobalStyles = createGlobalStyle`
 
   a {
     text-decoration: none;
+    color: ${Theme.colors.primary}
   }
 
   img {
@@ -43,5 +44,27 @@ export const GlobalStyles = createGlobalStyle`
     max-width: 50rem;
     padding: 0 1rem;
     margin: 0 auto;
+  }
+
+  .title {
+    position: relative;
+    font-family: ${Theme.fonts.secondary};
+    line-height: 1;
+    font-size: 3rem;
+    margin: 1rem 0;
+    z-index: 1;
+  }
+
+  .title::after {
+    content: '';
+    position: absolute;
+    display: block;
+    bottom: 5px;
+    left: -5px;
+    border-radius: .2rem;
+    z-index: -1;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: ${Theme.colors.secondary}
   }
 `
