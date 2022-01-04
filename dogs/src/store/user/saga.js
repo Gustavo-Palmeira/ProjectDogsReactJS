@@ -1,12 +1,15 @@
 import { takeLatest, all, call, put } from 'redux-saga/effects'
 
-import { getUser, userLogin, tokenValidate } from '../../services/user'
+import { getUser, userLogin, tokenValidate, createUserLogin } from '../../services/user'
 
 import {
+  login as loginRequest,
   actionsTypes,
   loginSuccess,
   loginError,
   logoutSuccess,
+  createUserError,
+  createUserSuccess,
 } from './actions'
 
 function* login({ payload }) {
@@ -44,10 +47,24 @@ function* userTokenValidate({ payload }) {
   }
 }
 
+function* createUser({ payload }) {
+  const { username, email, password } = payload
+
+  try {
+    const response = yield call(createUserLogin, username, email, password)
+    yield put(createUserSuccess(response.data))
+    if (response.status === 200) yield put(loginRequest(username, password))
+  } catch (error) {
+    yield put(createUserError(error.response.data.message))
+    console.warn(error)
+  }
+}
+
 export default function* rootSaga() {
   yield all([
     takeLatest(actionsTypes.LOGIN_REQUEST, login),
     takeLatest(actionsTypes.TOKEN_VALIDATE, userTokenValidate),
     takeLatest(actionsTypes.LOGOUT, logout),
+    takeLatest(actionsTypes.CREATE_USER_REQUEST, createUser),
   ])
 }

@@ -32,7 +32,7 @@ export const Container = styled.section`
     font-family: ${Theme.fonts.primary};
     cursor: pointer;
     border: none;
-    border-radius: 0.2rem;
+    border-radius: 0.4rem;
     background-color: ${Theme.colors.secondary};
     color: ${Theme.colors.tertiary};
     transition: 0.1s;
@@ -57,7 +57,7 @@ export const Input = styled(FastField)`
   font-size: 1rem;
   padding: 0.8rem;
   border: solid 1px ${Theme.colors.light};
-  border-radius: 0.2rem;
+  border-radius: 0.4rem;
   background-color: ${Theme.colors.light};
   transition: 0.2s;
 
@@ -74,14 +74,14 @@ export const Label = styled.label`
   display: block;
   font-size: 1rem;
   line-height: 1;
-  padding-bottom: 0.5rem;
+  padding: 0.5rem 0;
 `
 
 export const Error = styled.p`
   color: ${Theme.colors.error};
   font-size: 0.875rem;
-  font-weight: bold;
-  margin: 0.5rem 0;
+  font-weight: 500;
+  margin: 0.5rem;
 `
 
 export const Register = styled.div`

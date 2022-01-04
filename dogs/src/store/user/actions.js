@@ -5,6 +5,10 @@ export const actionsTypes = {
   TOKEN_VALIDATE: '@user/VALIDATE_TOKEN',
   LOGOUT: '@user/LOGOUT',
   LOGOUT_SUCCESS: '@user/LOGOUT_SUCCESS',
+  CREATE_USER_REQUEST: '@user/CREATE_USER_REQUEST',
+  CREATE_USER_SUCCESS: '@user/CREATE_USER_SUCCESS',
+  CREATE_USER_ERROR: '@user/CREATE_USER_ERROR',
+  RESET_ERROR_LOADING: '@user/RESET_ERROR_LOADING',
 }
 
 const baseSelector = (state) => state.user
@@ -31,6 +35,27 @@ export function logoutSuccess() {
 
 export function tokenValidate(token) {
   return { type: actionsTypes.TOKEN_VALIDATE, payload: { token } }
+}
+
+export function createUser(username, email, password) {
+  return { type: actionsTypes.CREATE_USER_REQUEST, payload: { username, email, password } }
+}
+
+export function createUserSuccess(user) {
+  return { type: actionsTypes.CREATE_USER_SUCCESS, payload: { user } }
+}
+
+export function createUserError(error) {
+  return { type: actionsTypes.CREATE_USER_ERROR, payload: { error } }
+}
+
+export function resetErrorLoading() {
+  return { type: actionsTypes.RESET_ERROR_LOADING }
+}
+
+// Selectors
+export function userDataSelector(state) {
+  return baseSelector(state)
 }
 
 export function userSelector(state) {

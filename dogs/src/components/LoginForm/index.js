@@ -3,16 +3,14 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Form, Formik } from 'formik'
 import { loginSchema } from '../../schemas/loginSchema'
-
 import {
   login,
+  resetErrorLoading,
   loginErrorSelector,
   loginLoadingSelector,
   userSelector,
 } from '../../store/user/actions'
-
 import Button from '../Forms/Button'
-
 import { Container, Input, Error, Label, Register } from './styles'
 
 const LoginForm = () => {
@@ -29,6 +27,10 @@ const LoginForm = () => {
   useEffect(() => {
     if (user) navigate('/account')
   }, [user])
+
+  useEffect(() => {
+    dispatch(resetErrorLoading())
+  }, [])
 
   return (
     <Container>

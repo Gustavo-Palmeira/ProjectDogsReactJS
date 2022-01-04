@@ -9,7 +9,7 @@ const INITIAL_STATE = {
 }
 
 export default createReducer(INITIAL_STATE, {
-  [actionsTypes.LOGIN_REQUEST]: (state, { payload }) => ({
+  [actionsTypes.LOGIN_REQUEST]: (state) => ({
     user: null,
     error: null,
     loading: true,
@@ -19,7 +19,7 @@ export default createReducer(INITIAL_STATE, {
     error: null,
     loading: false,
   }),
-  [actionsTypes.LOGOUT_SUCCESS]: (state, { payload }) => ({
+  [actionsTypes.LOGOUT_SUCCESS]: (state) => ({
     user: null,
     error: null,
     loading: false,
@@ -27,6 +27,26 @@ export default createReducer(INITIAL_STATE, {
   [actionsTypes.LOGIN_ERROR]: (state, { payload }) => ({
     user: null,
     error: payload.error,
+    loading: false,
+  }),
+  [actionsTypes.CREATE_USER_REQUEST]: (state) => ({
+    user: null,
+    error: null,
+    loading: true,
+  }),
+  [actionsTypes.CREATE_USER_SUCCESS]: (state, { payload }) => ({
+    user: null,
+    error: null,
+    loading: false,
+  }),
+  [actionsTypes.CREATE_USER_ERROR]: (state, { payload }) => ({
+    user: null,
+    error: payload.error,
+    loading: false,
+  }),
+  [actionsTypes.RESET_ERROR_LOADING]: (state) => ({
+    ...state,
+    error: null,
     loading: false,
   }),
 })

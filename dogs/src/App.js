@@ -10,6 +10,8 @@ import { tokenValidate } from './store/user/actions'
 
 import { GlobalStyles } from './globalStyles'
 import { Container } from './styles'
+import { User } from './pages/User'
+import { ProtectedRoute } from './helpers/protectedRoute'
 
 function App() {
   const dispatch = useDispatch()
@@ -30,6 +32,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/login/*' element={<Login />} />
+          <Route path='/account/*' element={<ProtectedRoute><User /></ProtectedRoute>} />
         </Routes>
         <Footer />
       </BrowserRouter>

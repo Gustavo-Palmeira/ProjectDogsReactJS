@@ -10,9 +10,7 @@ axios.defaults.headers.common = {
 }
 
 export const userLogin = async (username, password) => {
-  const { data } = await api.post('/jwt-auth/v1/token', {
-    username,
-    password,
+  const { data } = await api.post('/jwt-auth/v1/token', { username,  password,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -35,6 +33,14 @@ export const tokenValidate = async (token) => {
     method: 'post',
     headers: {
       Authorization: `Bearer ${token}`,
+    },
+  })
+}
+
+export const createUserLogin = async (username, email, password) => {
+  return api.post('/api/user', { username, email, password,
+    headers: {
+      'Content-Type': 'application/json',
     },
   })
 }
