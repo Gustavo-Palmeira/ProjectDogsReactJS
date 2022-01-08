@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { createUserSchema } from '../../schemas/createUserSchema'
 import { Formik, Form } from 'formik'
+import { createUserSchema } from '../../schemas/createUserSchema'
 import {
   createUser,
   resetErrorLoading,
@@ -17,9 +17,7 @@ const LoginCreate = () => {
   const { error, loading } = useSelector(userDataSelector)
 
   const handleCreateUser = ({ username, email, password }) => {
-    try {
-      dispatch(createUser(username, email, password))
-    } catch {}
+    dispatch(createUser(username, email, password))
   }
 
   useEffect(() => {

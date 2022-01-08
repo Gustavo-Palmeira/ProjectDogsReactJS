@@ -10,37 +10,39 @@ const INITIAL_STATE = {
 
 export default createReducer(INITIAL_STATE, {
   [actionsTypes.LOGIN_REQUEST]: (state) => ({
-    user: null,
+    ...state,
     error: null,
     loading: true,
   }),
   [actionsTypes.LOGIN_SUCCESS]: (state, { payload }) => ({
+    ...state,
     user: { ...payload.user.data },
     error: null,
     loading: false,
   }),
   [actionsTypes.LOGOUT_SUCCESS]: (state) => ({
+    ...state,
     user: null,
     error: null,
     loading: false,
   }),
   [actionsTypes.LOGIN_ERROR]: (state, { payload }) => ({
-    user: null,
+    ...state,
     error: payload.error,
     loading: false,
   }),
   [actionsTypes.CREATE_USER_REQUEST]: (state) => ({
-    user: null,
+    ...state,
     error: null,
     loading: true,
   }),
-  [actionsTypes.CREATE_USER_SUCCESS]: (state, { payload }) => ({
-    user: null,
+  [actionsTypes.CREATE_USER_SUCCESS]: (state) => ({
+    ...state,
     error: null,
     loading: false,
   }),
   [actionsTypes.CREATE_USER_ERROR]: (state, { payload }) => ({
-    user: null,
+    ...state,
     error: payload.error,
     loading: false,
   }),

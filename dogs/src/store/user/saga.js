@@ -21,7 +21,6 @@ function* login({ payload }) {
     yield put(loginSuccess(user))
   } catch (error) {
     yield put(loginError('Usuário ou senha inválidos'))
-    console.warn(error)
   }
 }
 
@@ -30,7 +29,7 @@ function* logout() {
     window.localStorage.removeItem('token')
     yield put(logoutSuccess())
   } catch (error) {
-    console.warn(error)
+    yield put(loginError('Erro ao sair da conta, tente novamente'))
   }
 }
 
@@ -43,7 +42,6 @@ function* userTokenValidate({ payload }) {
     yield put(loginSuccess(user))
   } catch (error) {
     yield logout()
-    console.warn(error)
   }
 }
 
@@ -56,7 +54,6 @@ function* createUser({ payload }) {
     if (response.status === 200) yield put(loginRequest(username, password))
   } catch (error) {
     yield put(createUserError(error.response.data.message))
-    console.warn(error)
   }
 }
 

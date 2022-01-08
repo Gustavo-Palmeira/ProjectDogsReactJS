@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate, Route, Routes } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { userSelector } from '../../store/user/actions'
@@ -13,7 +13,9 @@ const Login = () => {
   const navigate = useNavigate()
   const user = useSelector(userSelector)
 
-  if (user) navigate('/account')
+  useEffect(() => {
+    if (user) navigate('/account')
+  }, [user])
 
   return (
     <Container>
