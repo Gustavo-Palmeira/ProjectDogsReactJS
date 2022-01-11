@@ -5,7 +5,7 @@ import { actionsTypes } from './actions'
 const INITIAL_STATE = {
   user: null,
   error: null,
-  loading: false,
+  loading: null,
 }
 
 export default createReducer(INITIAL_STATE, {

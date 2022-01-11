@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 
-import { userSelector } from '../store/user/actions'
+import { userDataSelector } from '../store/user/actions'
 
 export const ProtectedRoute = ({ children }) => {
-  const login = useSelector(userSelector)
+  const { user, loading } = useSelector(userDataSelector)
 
-  return login ? children : <Navigate to='/login' />
+  return user ? children : loading === false && <Navigate to='/login' />
 }
 
 ProtectedRoute.propTypes = {
