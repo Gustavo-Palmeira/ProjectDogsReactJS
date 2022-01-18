@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
-export const Container = styled.header`
+import { animateLeft } from '../../../helpers/animations'
 
+export const Container = styled.section`
+  animation: ${animateLeft} 0.3s forwards;
 `

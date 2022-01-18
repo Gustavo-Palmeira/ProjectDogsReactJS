@@ -1,13 +1,4 @@
-import axios from 'axios'
-
-const api = axios.create({
-  baseURL: 'https://dogsapi.origamid.dev/json',
-  timeout: 29000,
-})
-
-axios.defaults.headers.common = {
-  'Content-Type': 'application/json',
-}
+import { api } from './index'
 
 export const userLogin = async (username, password) => {
   const { data } = await api.post('/jwt-auth/v1/token', { username,  password,
