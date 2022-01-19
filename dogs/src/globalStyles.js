@@ -46,6 +46,10 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0 auto;
   }
 
+  .main-container {
+    margin-top: 4rem;
+  }
+
   .title {
     position: relative;
     font-family: ${Theme.fonts.secondary};

@@ -8,3 +8,9 @@ export const postPhoto = async (formData, token) => {
     },
   })
 }
+
+export const getPhotos = async (page, total, user) => {
+  return api.get(`/api/photo/?_page=${page}&_total=${total}&_user=${user}`,
+    { cache: 'no-store' }
+  )
+}

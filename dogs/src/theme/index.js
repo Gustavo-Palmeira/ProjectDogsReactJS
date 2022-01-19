@@ -1,11 +1,11 @@
 export const Theme = {
   colors: {
-    primary: '#333',
-    secondary: '#fb1',
+    primary: '#333333',
+    secondary: '#ffbb11',
     tertiary: '#764701',
-    quaternary: '#fea',
-    quinary: '#667',
-    senary: '#ddd',
+    quaternary: '#ffeeaa',
+    quinary: '#666677',
+    senary: '#dddddd',
     // septenary,
     // octonary,
     // nonary,
@@ -13,10 +13,10 @@ export const Theme = {
     light: '#ededed',
     dark: '#121212',
     danger: '#de2c1f',
-    error: '#f31',
+    error: '#ff3311',
 
-    white: '#fff',
-    black: '#000',
+    white: '#ffffff',
+    black: '#000000',
   },
 
   fonts: {

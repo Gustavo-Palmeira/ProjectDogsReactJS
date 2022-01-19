@@ -1,11 +1,14 @@
 import React from 'react'
+import { Feed } from '../../components/Feed/Feed'
 
 import { Container } from './styles'
 
-export const PhotoFeed = () => {
+const Home = () => {
   return (
     <Container>
-      <h1>Photo feed</h1>
+      <Feed />
     </Container>
   )
 }
+
+export default Home

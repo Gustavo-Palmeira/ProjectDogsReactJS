@@ -2,12 +2,10 @@ import React from 'react'
 
 import { Container } from './styles'
 
-const Home = () => {
+export const Loading = () => {
   return (
     <Container>
-      <h1>Home</h1>
+      Carregando
     </Container>
   )
 }
-
-export default Home

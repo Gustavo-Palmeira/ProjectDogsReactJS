@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { PhotoFeed } from '../../components/Feed/PhotoFeed'
+import { FeedPhotos } from '../../components/Feed/FeedPhotos'
 import UserHeader from '../../components/User/UserHeader'
 import UserPhotoPost from '../../components/User/UserPhotoPost'
 import UserStats from '../../components/User/UserStats'
@@ -12,7 +12,7 @@ export const User = () => {
     <Container>
       <UserHeader />
       <Routes>
-        <Route path='/' element={<PhotoFeed />} />
+        <Route path='/' element={<FeedPhotos />} />
         <Route path='/post' element={<UserPhotoPost />} />
         <Route path='/stats' element={<UserStats />} />
       </Routes>
