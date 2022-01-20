@@ -14,3 +14,9 @@ export const getPhotos = async (page, total, user) => {
     { cache: 'no-store' }
   )
 }
+
+export const getPhoto = async (id) => {
+  return api.get(`/api/photo/${id}`,
+    { cache: 'no-store' }
+  )
+}

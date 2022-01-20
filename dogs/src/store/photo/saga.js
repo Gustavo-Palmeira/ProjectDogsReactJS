@@ -1,7 +1,11 @@
 import { takeLatest, all, call, put } from 'redux-saga/effects'
-import { postPhoto as postPhotoRequest, getPhotos as getPhotosRequest } from '../../services/photo'
+import {
+  postPhoto as postPhotoRequest,
+  getPhotos as getPhotosRequest,
+  getPhoto as getPhotoRequest
+} from '../../services/photo'
 
-import { actionsTypes, getPhotosError, getPhotosSuccess, postPhotoError, postPhotoSuccess } from './actions'
+import { actionsTypes, getPhotoError, getPhotosError, getPhotosSuccess, getPhotoSuccess, postPhotoError, postPhotoSuccess } from './actions'
 
 function* postPhoto({ payload }) {
   try {
@@ -23,9 +27,21 @@ function* getPhotos({ payload }) {
     yield put(getPhotosError('Não foi possível carregar o feed de fotos'))
   }
 }
+
+function* getPhoto({ payload }) {
+  try {
+    const { id } = payload
+    const { data } = yield call(getPhotoRequest, id)
+    yield put(getPhotoSuccess(data))
+  } catch (error) {
+    yield put(getPhotoError('Não foi possível carregar a foto'))
+  }
+}
+
 export default function* rootSaga() {
   yield all([
     takeLatest(actionsTypes.POST_PHOTO_REQUEST, postPhoto),
     takeLatest(actionsTypes.GET_PHOTOS_REQUEST, getPhotos),
+    takeLatest(actionsTypes.GET_PHOTO_REQUEST, getPhoto),
   ])
 }

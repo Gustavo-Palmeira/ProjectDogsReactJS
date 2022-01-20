@@ -11,13 +11,13 @@ import { Container, Preview } from './styles'
 
 const UserPhotoPost = () => {
   const dispatch = useDispatch()
-  const { photo, loading, error } = useSelector(photoDataSelector)
+  const { photoPosted, loading, error } = useSelector(photoDataSelector)
   const [preview, setPreview] = useState(null)
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (photo) navigate('/account')
-  }, [photo, navigate])
+    if (photoPosted) navigate('/account')
+  }, [photoPosted, navigate])
 
   const handlePostPhoto = (values) => {
     const formData = new FormData()
