@@ -11,12 +11,21 @@ export const postPhoto = async (formData, token) => {
 
 export const getPhotos = async (page, total, user) => {
   return api.get(`/api/photo/?_page=${page}&_total=${total}&_user=${user}`,
-    { cache: 'no-store' }
+    { cache: 'no-cache, no-store' }
   )
 }
 
 export const getPhoto = async (id) => {
   return api.get(`/api/photo/${id}`,
-    { cache: 'no-store' }
+    { cache: 'no-cache, no-store' }
   )
+}
+
+export const postPhotoComment = async (id, comment, token) => {
+  return api.post(`/api/comment/${id}`, { comment }, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  })
 }

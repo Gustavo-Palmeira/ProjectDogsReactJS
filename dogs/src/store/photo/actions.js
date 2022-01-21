@@ -2,6 +2,9 @@ export const actionsTypes = {
   POST_PHOTO_REQUEST: '@photo/POST_PHOTO_REQUEST',
   POST_PHOTO_SUCCESS: '@photo/POST_PHOTO_SUCCESS',
   POST_PHOTO_ERROR: '@photo/POST_PHOTO_ERROR',
+  POST_PHOTO_COMMENT_REQUEST: '@photo/POST_PHOTO_COMMENT_REQUEST',
+  POST_PHOTO_COMMENT_SUCCESS: '@photo/POST_PHOTO_COMMENT_SUCCESS',
+  POST_PHOTO_COMMENT_ERROR: '@photo/POST_PHOTO_COMMENT_ERROR',
   GET_PHOTOS_REQUEST: '@photo/GET_PHOTOS_REQUEST',
   GET_PHOTOS_SUCCESS: '@photo/GET_PHOTOS_SUCCESS',
   GET_PHOTOS_ERROR: '@photo/GET_PHOTOS_ERROR',
@@ -24,6 +27,19 @@ export function postPhotoSuccess(photoData) {
 
 export function postPhotoError(error) {
   return { type: actionsTypes.POST_PHOTO_ERROR, payload: { error } }
+}
+
+// Photo Post Comment
+export function postPhotoComment(id, comment) {
+  return { type: actionsTypes.POST_PHOTO_COMMENT_REQUEST, payload: { id, comment } }
+}
+
+export function postPhotoCommentSuccess(photoComment) {
+  return { type: actionsTypes.POST_PHOTO_COMMENT_SUCCESS, payload: { photoComment } }
+}
+
+export function postPhotoCommentError(error) {
+  return { type: actionsTypes.POST_PHOTO_COMMENT_ERROR, payload: { error } }
 }
 
 // Photos Get
@@ -61,4 +77,3 @@ export function setCurrentModal(photo) {
 export function photoDataSelector(state) {
   return baseSelector(state)
 }
-

@@ -62,6 +62,13 @@ export default createReducer(INITIAL_STATE, {
   [actionsTypes.SET_PHOTO_MODAL]: (state, { payload }) => ({
     ...state,
     modal: payload.photo,
+    photo: payload.photo,
+    error: null,
+    loading: false,
+  }),
+  [actionsTypes.POST_PHOTO_COMMENT_SUCCESS]: (state, { payload }) => ({
+    ...state,
+    photo: payload.photoComment,
     error: null,
     loading: false,
   }),

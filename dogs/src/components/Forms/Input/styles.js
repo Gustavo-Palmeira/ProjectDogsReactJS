@@ -30,6 +30,8 @@ export const Label = styled.label`
   font-size: 1rem;
   line-height: 1;
   padding: 0.5rem 0;
+  font-weight: bold;
+  color: ${({ theme }) => theme.colors.primary};
 `
 
 export const Error = styled.p`

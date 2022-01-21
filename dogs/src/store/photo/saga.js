@@ -2,10 +2,11 @@ import { takeLatest, all, call, put } from 'redux-saga/effects'
 import {
   postPhoto as postPhotoRequest,
   getPhotos as getPhotosRequest,
-  getPhoto as getPhotoRequest
+  getPhoto as getPhotoRequest,
+  postPhotoComment as postPhotoCommentRequest
 } from '../../services/photo'
 
-import { actionsTypes, getPhotoError, getPhotosError, getPhotosSuccess, getPhotoSuccess, postPhotoError, postPhotoSuccess } from './actions'
+import { actionsTypes, getPhotoError, getPhotosError, getPhotosSuccess, getPhotoSuccess, postPhotoCommentError, postPhotoCommentSuccess, postPhotoError, postPhotoSuccess } from './actions'
 
 function* postPhoto({ payload }) {
   try {
@@ -38,10 +39,23 @@ function* getPhoto({ payload }) {
   }
 }
 
+function* postPhotoComment({ payload }) {
+  try {
+    const { id, comment } = payload
+    const token = window.localStorage.getItem('token')
+    yield call(postPhotoCommentRequest, id, comment, token)
+    const { data } = yield call(getPhotoRequest, id)
+    yield put(postPhotoCommentSuccess(data))
+  } catch (error) {
+    yield put(postPhotoCommentError('Não foi possível enviar o comentário, tente novamente'))
+  }
+}
+
 export default function* rootSaga() {
   yield all([
     takeLatest(actionsTypes.POST_PHOTO_REQUEST, postPhoto),
     takeLatest(actionsTypes.GET_PHOTOS_REQUEST, getPhotos),
     takeLatest(actionsTypes.GET_PHOTO_REQUEST, getPhoto),
+    takeLatest(actionsTypes.POST_PHOTO_COMMENT_REQUEST, postPhotoComment),
   ])
 }

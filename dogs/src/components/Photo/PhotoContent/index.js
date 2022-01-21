@@ -16,19 +16,21 @@ export const PhotoContent = () => {
           <img src={photo.src} alt={photo.title} />  
         </div>
         <div className='details'>
-          <p>
-            <Link to={`/perfil/${photo.author}`} >@{photo.author}</Link>
-            <span>{photo.acessos}</span>
-          </p>
-          <h1 className='title'>
-            <Link to={`/foto/${photo.id}`}>{photo.title}</Link>
-          </h1>
-          <ul>
-            <li>{photo.peso} Kg</li>
-            <li>{photo.idade} {photo.idade === 1 ? 'ano' : 'anos'}</li>
-          </ul>
+          <div>
+            <p className='author'>
+              <Link to={`/perfil/${photo.author}`} >@{photo.author}</Link>
+              <span>{photo.acessos}</span>
+            </p>
+            <h1 className='title'>
+              <Link to={`/foto/${photo.id}`}>{photo.title}</Link>
+            </h1>
+            <ul className='attributes'>
+              <li>{photo.peso} Kg</li>
+              <li>{photo.idade} {photo.idade === 1 ? 'ano' : 'anos'}</li>
+            </ul>
+          </div>
+          <PhotoComments />
         </div>
-        <PhotoComments />
       </Photo>
     )
   return null
