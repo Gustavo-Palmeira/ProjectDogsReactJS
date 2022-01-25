@@ -13,3 +13,8 @@ export const bark = keyframes`
   from { opacity: 0 }
   to { opacity: 1 }
 `
+
+export const skeleton = keyframes`
+  from { background-position: 0px }
+  to { background-position: 200% }
+`

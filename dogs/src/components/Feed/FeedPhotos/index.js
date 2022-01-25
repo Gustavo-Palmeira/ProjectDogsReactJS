@@ -12,7 +12,7 @@ export const FeedPhotos = () => {
   const { photos, error, loading } = useSelector(photoDataSelector)
 
   useEffect(() => {
-    dispatch(getPhotos({ page: 1, total: 6, user: 15 }))
+    dispatch(getPhotos({ page: 1, total: 6, user: 0 }))
   }, [])
 
   if (error) return <Error>{error}</Error>

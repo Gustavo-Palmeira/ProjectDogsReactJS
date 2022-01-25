@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 
 import { Photo } from './styles'
 import { setCurrentModal } from '../../../store/photo/actions'
+import { Image } from '../../Image'
 
 export const FeedPhotoItem = ({ photo }) => {
   const dispatch = useDispatch()
@@ -14,7 +15,7 @@ export const FeedPhotoItem = ({ photo }) => {
 
   return (
     <Photo onClick={setModalPhoto}>
-      <img src={photo.src} alt={photo.title} />
+      <Image src={photo.src} alt={photo.title} />
       <span>{photo.acessos}</span>
     </Photo>
   )

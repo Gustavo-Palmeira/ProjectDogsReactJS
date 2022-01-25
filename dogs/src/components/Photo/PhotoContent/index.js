@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { photoDataSelector } from '../../../store/photo/actions'
 import { userDataSelector } from '../../../store/user/actions'
+import { Image } from '../../Image'
 import { PhotoComments } from '../PhotoComments'
 import { PhotoDelete } from '../PhotoDelete'
 
@@ -16,18 +17,18 @@ export const PhotoContent = () => {
     return (
       <Photo>
         <div className='img-box'>
-          <img src={photo.src} alt={photo.title} />  
+          <Image src={photo.src} alt={photo.title} />
         </div>
         <div className='details-grid'>
           <div className='details'>
             <div>
-              <p className='author'>
+              <div className='author'>
                 {user && user.username === photo.author
                   ? <PhotoDelete id={photo.id} />
                   : <Link to={`/perfil/${photo.author}`} >@{photo.author}</Link>
                 }
                 <span>{photo.acessos}</span>
-              </p>
+              </div>
               <h1 className='title'>
                 <Link to={`/foto/${photo.id}`}>{photo.title}</Link>
               </h1>
