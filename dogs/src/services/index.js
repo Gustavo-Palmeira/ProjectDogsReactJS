@@ -1,7 +1,9 @@
 import axios from 'axios'
 
+export const baseURL = 'https://dogsapi.origamid.dev/json'
+
 export const api = axios.create({
-  baseURL: 'https://dogsapi.origamid.dev/json',
+  baseURL,
   timeout: 29000,
 })
 

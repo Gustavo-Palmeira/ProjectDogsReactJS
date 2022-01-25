@@ -8,3 +8,8 @@ export const animateLeft = keyframes`
 export const scaleUp = keyframes`
   to { transform: initial }
 `
+
+export const bark = keyframes`
+  from { opacity: 0 }
+  to { opacity: 1 }
+`

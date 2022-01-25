@@ -29,3 +29,11 @@ export const postPhotoComment = async (id, comment, token) => {
     },
   })
 }
+
+export const deletePhoto = async (id, token) => {
+  return api.delete(`/api/photo/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+}

@@ -12,6 +12,9 @@ export const actionsTypes = {
   GET_PHOTO_SUCCESS: '@photo/GET_PHOTO_SUCCESS',
   GET_PHOTO_ERROR: '@photo/GET_PHOTO_ERROR',
   SET_PHOTO_MODAL: '@photo/SET_PHOTO_MODAL',
+  DELETE_PHOTO_REQUEST: '@photo/DELETE_PHOTO_REQUEST',
+  DELETE_PHOTO_SUCCESS: '@photo/DELETE_PHOTO_SUCCESS',
+  DELETE_PHOTO_ERROR: '@photo/DELETE_PHOTO_ERROR',
 }
 
 const baseSelector = (state) => state.photo
@@ -71,6 +74,19 @@ export function getPhotoError(error) {
 // Photo Modal
 export function setCurrentModal(photo) {
   return { type: actionsTypes.SET_PHOTO_MODAL, payload: { photo } }
+}
+
+// Photo Delete
+export function deletePhoto(id) {
+  return { type: actionsTypes.DELETE_PHOTO_REQUEST, payload: { id } }
+}
+
+export function deletePhotoSuccess() {
+  return { type: actionsTypes.DELETE_PHOTO_SUCCESS }
+}
+
+export function deletePhotoError(error) {
+  return { type: actionsTypes.DELETE_PHOTO_ERROR, payload: { error } }
 }
 
 // Selectors

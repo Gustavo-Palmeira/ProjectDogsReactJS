@@ -72,4 +72,19 @@ export default createReducer(INITIAL_STATE, {
     error: null,
     loading: false,
   }),
+  [actionsTypes.DELETE_PHOTO_REQUEST]: (state) => ({
+    ...state,
+    error: null,
+    loading: true,
+  }),
+  [actionsTypes.DELETE_PHOTO_SUCCESS]: (state) => ({
+    ...state,
+    error: null,
+    loading: false,
+  }),
+  [actionsTypes.DELETE_PHOTO_ERROR]: (state, { payload }) => ({
+    ...state,
+    error: payload.error,
+    loading: false,
+  }),
 })

@@ -9,15 +9,17 @@ export const Photo = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   display: grid;
   grid-template-columns: 36rem 20rem;
-  grid-template-rows: auto 1fr auto;
   overflow: hidden;
   transform: scale(.6);
   animation: ${scaleUp} .3s forwards;
 
+  .details-grid {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 36rem;
+  }
+
   .details {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     padding: 2rem 2rem 0 2rem;
   }
 
@@ -72,6 +74,8 @@ export const Photo = styled.div`
 
   img {
     grid-row: 1/4;
+    height: 36rem;
+    object-fit: cover;
   }
 
   @media(max-width: 64rem) {

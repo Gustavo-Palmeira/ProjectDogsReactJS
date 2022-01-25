@@ -3,11 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { Form, Formik } from 'formik';
 import { photoDataSelector, postPhotoComment } from '../../../store/photo/actions';
-import { Label, Input, Error } from '../../Forms/Input/styles'
+import { Input, Error } from '../../Forms/Input/styles'
 import { ReactComponent as CommentSvg } from '../../../assets/enviar.svg';
 import { Container } from './styles'
 import { postPhotoCommentSchema } from '../../../schemas/postPhotoCommentSchema';
-import { FormButton } from '../../Forms/Button/styles';
 
 export const PhotoForm = () => {
   const dispatch = useDispatch()
@@ -21,23 +20,24 @@ export const PhotoForm = () => {
     <Container>
       <Formik
         initialValues={{ comment: '' }}
-        onSubmit={handlePostComment}
+        onSubmit={( values, { resetForm }) => {
+          handlePostComment(values)
+          resetForm()
+        }}
         validationSchema={postPhotoCommentSchema}
       >
         {({ errors, touched }) => (
           <Form className='form'>
-            <Label htmlFor='comment'>Comentário</Label>
             <Input type='text' component='textarea' name='comment' placeholder='Comente...'/>
-            {errors.comment && touched.comment && <Error>{errors.comment}</Error>}
-
             {loading ? (
-              <FormButton type='submit' disabled>Carregando...</FormButton>
+              <button className='submit-button' type='submit' disabled>Carregando...</button>
             ) : (
-              <FormButton type='submit'>
+              <button className='submit-button' type='submit'>
                 <CommentSvg />
-              </FormButton>
+              </button>
             )}
-            {error && <Error>{error}</Error>}
+            {errors.comment && touched.comment && <Error className='error'>{errors.comment}</Error>}
+            {error && <Error className='error'>{error}</Error>}
           </Form>
         )}
       </Formik>
