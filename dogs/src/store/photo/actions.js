@@ -24,8 +24,8 @@ export function postPhoto(photoData) {
   return { type: actionsTypes.POST_PHOTO_REQUEST, payload: { photoData } }
 }
 
-export function postPhotoSuccess(photoData) {
-  return { type: actionsTypes.POST_PHOTO_SUCCESS, payload: { photoData } }
+export function postPhotoSuccess() {
+  return { type: actionsTypes.POST_PHOTO_SUCCESS }
 }
 
 export function postPhotoError(error) {

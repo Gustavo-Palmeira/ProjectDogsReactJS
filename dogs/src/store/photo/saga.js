@@ -14,6 +14,7 @@ function* postPhoto({ payload }) {
     const token = window.localStorage.getItem('token')
     const data = yield call(postPhotoRequest, photoData, token)
     yield put(postPhotoSuccess(data))
+    window.location.href = '/account'
   } catch (error) {
     yield put(postPhotoError('Não foi possível enviar os dados, tente novamente'))
   }

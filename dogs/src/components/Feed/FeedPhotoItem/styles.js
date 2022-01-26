@@ -12,9 +12,15 @@ export const Photo = styled.li`
     grid-area: 1/1;
   }
 
+  &:hover {
+    box-shadow: 2px 2px 4px 4px ${`${Theme.colors.primary}44`};
+    transition: .3s;
+    transform: perspective(200px) translateZ(2px);
+  }
+
   span {
     grid-area: 1/1;
-    background-color: ${`${Theme.colors.primary  }44`};
+    background-color: ${`${Theme.colors.primary}44`};
     color: ${Theme.colors.white};
     font-size: 1rem;
     text-align: center;

@@ -3,7 +3,6 @@ import { createReducer } from 'reduxsauce'
 import { actionsTypes } from './actions'
 
 const INITIAL_STATE = {
-  photoPosted: null,
   photos: null,
   photo: null,
   modal: null,
@@ -17,8 +16,8 @@ export default createReducer(INITIAL_STATE, {
     error: null,
     loading: true,
   }),
-  [actionsTypes.POST_PHOTO_SUCCESS]: (state, { payload }) => ({
-    photoPosted: payload.photoData,
+  [actionsTypes.POST_PHOTO_SUCCESS]: (state) => ({
+    ...state,
     error: null,
     loading: false,
   }),

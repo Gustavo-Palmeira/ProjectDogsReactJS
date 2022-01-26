@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Field, Form, Formik } from 'formik'
-import { useNavigate } from 'react-router-dom'
 
 import { Label, Input, Error } from '../../Forms/Input/styles'
 import { postPhotoSchema } from '../../../schemas/postPhotoSchema'
@@ -11,16 +10,12 @@ import { Container, Preview } from './styles'
 
 const UserPhotoPost = () => {
   const dispatch = useDispatch()
-  const { photoPosted, loading, error } = useSelector(photoDataSelector)
+  const { loading, error } = useSelector(photoDataSelector)
   const [preview, setPreview] = useState(null)
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    if (photoPosted) navigate('/account')
-  }, [photoPosted, navigate])
 
   const handlePostPhoto = (values) => {
     const formData = new FormData()
+
     formData.append('img', values.img)
     formData.append('nome', values.name)
     formData.append('peso', values.weight)
