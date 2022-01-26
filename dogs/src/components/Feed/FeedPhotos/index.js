@@ -16,14 +16,14 @@ export const FeedPhotos = () => {
   }, [])
 
   if (error) return <Error>{error}</Error>
-  if (loading) return <Loading />
-  if (photos)
-    return (
-      <Feed>
+  return (
+    <Feed>
+      {loading && <Loading />}
+      {photos && (
         <ul>
           {photos.map((photo) => <FeedPhotoItem key={photo.id} photo={photo} />)}
         </ul>
-      </Feed>
-    ) 
-  return null
+      )}
+    </Feed>
+  ) 
 }

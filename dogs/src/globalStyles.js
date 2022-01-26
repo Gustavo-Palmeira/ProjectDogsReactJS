@@ -41,13 +41,13 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .container {
-    max-width: 50rem;
+    max-width: 72rem;
     padding: 0 1rem;
     margin: 0 auto;
   }
 
   .main-container {
-    margin-top: 4rem;
+    margin-top: 2rem;
   }
 
   .title {
