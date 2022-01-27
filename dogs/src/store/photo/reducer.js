@@ -3,7 +3,8 @@ import { createReducer } from 'reduxsauce'
 import { actionsTypes } from './actions'
 
 const INITIAL_STATE = {
-  photos: null,
+  photos: [],
+  infinitePhotos: null,
   photo: null,
   modal: null,
   error: null,
@@ -33,7 +34,8 @@ export default createReducer(INITIAL_STATE, {
   }),
   [actionsTypes.GET_PHOTOS_SUCCESS]: (state, { payload }) => ({
     ...state,
-    photos: payload.photosData,
+    photos: [...state.photos, ...payload.photosData],
+    infinitePhotos: payload.photosData.length,
     error: null,
     loading: false,
   }),
@@ -84,6 +86,12 @@ export default createReducer(INITIAL_STATE, {
   [actionsTypes.DELETE_PHOTO_ERROR]: (state, { payload }) => ({
     ...state,
     error: payload.error,
+    loading: false,
+  }),
+  [actionsTypes.RESET_PHOTOS]: (state) => ({
+    ...state,
+    photos: [],
+    error: null,
     loading: false,
   }),
 })

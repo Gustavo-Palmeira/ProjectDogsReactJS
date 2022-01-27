@@ -8,6 +8,7 @@ export const actionsTypes = {
   GET_PHOTOS_REQUEST: '@photo/GET_PHOTOS_REQUEST',
   GET_PHOTOS_SUCCESS: '@photo/GET_PHOTOS_SUCCESS',
   GET_PHOTOS_ERROR: '@photo/GET_PHOTOS_ERROR',
+  RESET_PHOTOS: '@photo/RESET_PHOTOS',
   GET_PHOTO_REQUEST: '@photo/GET_PHOTO_REQUEST',
   GET_PHOTO_SUCCESS: '@photo/GET_PHOTO_SUCCESS',
   GET_PHOTO_ERROR: '@photo/GET_PHOTO_ERROR',
@@ -56,6 +57,10 @@ export function getPhotosSuccess(photosData) {
 
 export function getPhotosError(error) {
   return { type: actionsTypes.GET_PHOTOS_ERROR, payload: { error } }
+}
+
+export function resetPhotos() {
+  return { type: actionsTypes.RESET_PHOTOS }
 }
 
 // Photo Get

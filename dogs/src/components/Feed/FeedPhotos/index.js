@@ -1,20 +1,26 @@
 import React, { useEffect } from 'react'
 import { PropTypes } from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
-import { getPhotos, photoDataSelector } from '../../../store/photo/actions'
+import { getPhotos, photoDataSelector, resetPhotos } from '../../../store/photo/actions'
+import { userDataSelector } from '../../../store/user/actions'
 import { Error } from '../../Forms/Input/styles'
 import { Loading } from '../../Loading'
 import { FeedPhotoItem } from '../FeedPhotoItem'
 
 import { Feed } from './styles'
 
-export const FeedPhotos = ({ userId }) => {
+export const FeedPhotos = ({ userId, page }) => {
   const dispatch = useDispatch()
   const { photos, error, loading } = useSelector(photoDataSelector)
+  const { user } = useSelector(userDataSelector)
 
   useEffect(() => {
-    dispatch(getPhotos({ page: 1, total: 6, user: userId }))
-  }, [userId])
+    if (user?.id) dispatch(resetPhotos())
+  }, [user?.id])
+
+  useEffect(() => {
+    dispatch(getPhotos({ page, total: 6, user: userId }))
+  }, [userId, page])
 
   if (error) return <Error>{error}</Error>
   return (
@@ -31,9 +37,10 @@ export const FeedPhotos = ({ userId }) => {
 }
 
 FeedPhotos.propTypes = {
-  userId: PropTypes.number
+  userId: PropTypes.number,
+  page: PropTypes.number.isRequired
 }
 
 FeedPhotos.defaultProps = {
-  userId: 0
+  userId: 0,
 }
