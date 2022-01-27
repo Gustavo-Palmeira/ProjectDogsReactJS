@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <Container>
-      {loading === null
+      {loading === true
         ? <Loading />
         : (
           <Nav className='container'>
