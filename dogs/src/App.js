@@ -12,6 +12,7 @@ import { GlobalStyles } from './globalStyles'
 import { Container } from './styles'
 import { User } from './pages/User'
 import { ProtectedRoute } from './helpers/protectedRoute'
+import UserProfile from './components/User/UserProfile'
 
 function App() {
   const dispatch = useDispatch()
@@ -33,6 +34,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/login/*' element={<Login />} />
           <Route path='/account/*' element={<ProtectedRoute><User /></ProtectedRoute>} />
+          <Route path='/profile/:user' element={<UserProfile />} />
         </Routes>
         <Footer />
       </BrowserRouter>

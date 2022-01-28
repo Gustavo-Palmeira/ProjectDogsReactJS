@@ -25,7 +25,8 @@ export const EmptyState = styled.div`
   height: 200px;
 
   span {
-    font-family: ${Theme.fonts.secondary};
+    font-family: ${Theme.fonts.primary};
+    font-weight: bold;
     line-height: 1;
     font-size: 1rem;
     margin: 1rem 0;

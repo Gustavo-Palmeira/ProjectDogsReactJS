@@ -4,14 +4,14 @@ import { PropTypes } from 'prop-types'
 import { FeedModal } from '../FeedModal'
 import { FeedPhotos } from '../FeedPhotos'
 
-import { Container } from './styles'
+import { Container, InfinitePhotosMessage } from './styles'
 import { photoDataSelector, resetPhotos } from '../../../store/photo/actions'
 
 export const Feed = ({ userId }) => {
   const [page, setPage] = useState(1)
   const dispatch = useDispatch()
-  const { infinitePhotos } = useSelector(photoDataSelector)
-  
+  const { infinitePhotos, loading } = useSelector(photoDataSelector)
+
   useEffect(() => {
     return () => {
       dispatch(resetPhotos())
@@ -45,14 +45,20 @@ export const Feed = ({ userId }) => {
 
   return (
     <Container>
-      <FeedModal />
+      <FeedModal profile={userId} />
       <FeedPhotos userId={userId} page={page} />
+      {!loading && infinitePhotos === 0 && <InfinitePhotosMessage>
+        <p>Não existem mais postagens</p>
+      </InfinitePhotosMessage>}
     </Container>
   )
 }
 
 Feed.propTypes = {
-  userId: PropTypes.number
+  userId: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
 }
 
 Feed.defaultProps = {

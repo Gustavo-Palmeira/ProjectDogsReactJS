@@ -28,7 +28,6 @@ export const FeedPhotos = ({ userId, page }) => {
       {!loading && photos?.length < 1 && (
         <EmptyState>
           <EmptyStateImage />
-          <span>Nenhuma foto encontrada</span>
         </EmptyState>
       )}
     </Feed>
@@ -36,10 +35,13 @@ export const FeedPhotos = ({ userId, page }) => {
 }
 
 FeedPhotos.propTypes = {
-  userId: PropTypes.number,
+  userId: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   page: PropTypes.number.isRequired
 }
-
+  
 FeedPhotos.defaultProps = {
   userId: 0,
 }

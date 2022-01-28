@@ -19,6 +19,7 @@
     "jsx-quotes": ["error", "prefer-single"],
     "arrow-body-style": 0,
     "react/jsx-props-no-spreading": "off",
-    "no-alert": "off"
+    "no-alert": "off",
+    "no-nested-ternary": "off"
   }
 }
