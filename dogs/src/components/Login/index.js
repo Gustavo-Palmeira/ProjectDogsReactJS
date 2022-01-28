@@ -8,6 +8,7 @@ import LoginResetPassword from '../LoginResetPassword'
 import LoginForgotPassword from '../LoginForgotPassword'
 
 import { Container, Content } from './styles'
+import NotFound from '../NotFound'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -25,6 +26,7 @@ const Login = () => {
           <Route path='create' element={<LoginCreate />} />
           <Route path='forgot' element={<LoginForgotPassword />} />
           <Route path='reset' element={<LoginResetPassword />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </Content>
     </Container>

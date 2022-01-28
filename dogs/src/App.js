@@ -13,6 +13,7 @@ import { Container } from './styles'
 import { User } from './pages/User'
 import { ProtectedRoute } from './helpers/protectedRoute'
 import UserProfile from './components/User/UserProfile'
+import NotFound from './components/NotFound'
 
 function App() {
   const dispatch = useDispatch()
@@ -35,6 +36,7 @@ function App() {
           <Route path='/login/*' element={<Login />} />
           <Route path='/account/*' element={<ProtectedRoute><User /></ProtectedRoute>} />
           <Route path='/profile/:user' element={<UserProfile />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>
