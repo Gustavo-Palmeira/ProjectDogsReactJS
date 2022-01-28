@@ -35,9 +35,12 @@ export const Label = styled.label`
 `
 
 export const Error = styled.p`
-  color: ${Theme.colors.danger};
+  color: ${Theme.colors.error};
   font-size: 0.875rem;
-  margin-top: 0.25rem;
+  font-weight: 500;
+  margin: 0.5rem;
+  font-family: ${Theme.fonts.primary};
+  font-weight: bold;
 `
 
 export const Input = styled(FastField)`

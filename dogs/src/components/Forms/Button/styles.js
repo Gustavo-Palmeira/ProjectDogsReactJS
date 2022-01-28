@@ -9,11 +9,12 @@ export const FormButton = styled.button`
   margin: 0.5rem 0;
   font-size: 1rem;
   font-family: ${Theme.fonts.primary};
+  font-weight: bold;
   cursor: pointer;
   border: none;
   border-radius: 0.4rem;
   background-color: ${Theme.colors.secondary};
-  color: ${Theme.colors.tertiary};
+  color: ${Theme.colors.primary};
   transition: 0.1s;
 
   &:focus,

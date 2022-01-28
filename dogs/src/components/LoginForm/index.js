@@ -11,7 +11,8 @@ import {
   userSelector,
 } from '../../store/user/actions'
 import Button from '../Forms/Button'
-import { Container, Input, Error, Label, Register } from './styles'
+import { Label, Error } from '../Forms/Input/styles'
+import { Container, Input, Register } from './styles'
 
 const LoginForm = () => {
   const dispatch = useDispatch()

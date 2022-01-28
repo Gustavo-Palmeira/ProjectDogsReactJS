@@ -9,6 +9,9 @@ export const actionsTypes = {
   CREATE_USER_SUCCESS: '@user/CREATE_USER_SUCCESS',
   CREATE_USER_ERROR: '@user/CREATE_USER_ERROR',
   RESET_ERROR_LOADING: '@user/RESET_ERROR_LOADING',
+  FORGOT_PASSWORD_REQUEST: '@user/FORGOT_PASSWORD_REQUEST',
+  FORGOT_PASSWORD_SUCCESS: '@user/FORGOT_PASSWORD_SUCCESS',
+  FORGOT_PASSWORD_ERROR: '@user/FORGOT_PASSWORD_ERROR',
 }
 
 const baseSelector = (state) => state.user
@@ -53,10 +56,25 @@ export function resetErrorLoading() {
   return { type: actionsTypes.RESET_ERROR_LOADING }
 }
 
+// Forgot Password
+
+export function forgotPassword(forgot) {
+  return { type: actionsTypes.FORGOT_PASSWORD_REQUEST, payload: { forgot } }
+}
+
+export function forgotPasswordSuccess(forgot) {
+  return { type: actionsTypes.FORGOT_PASSWORD_SUCCESS, payload: { forgot } }
+}
+
+export function forgotPasswordError(error) {
+  return { type: actionsTypes.FORGOT_PASSWORD_ERROR, payload: { error } }
+}
+
 // Selectors
 export function userDataSelector(state) {
   return baseSelector(state)
 }
+
 
 export function userSelector(state) {
   return baseSelector(state).user

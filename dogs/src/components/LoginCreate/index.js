@@ -8,7 +8,7 @@ import {
   userDataSelector,
 } from '../../store/user/actions'
 import Button from '../Forms/Button'
-import { Label, Error, Input } from '../LoginForm/styles'
+import { Label, Error, Input } from '../Forms/Input/styles'
 
 import { Container } from './styles'
 
