@@ -36,9 +36,16 @@ export const createUserLogin = async (username, email, password) => {
   })
 }
 
-
 export const forgotPasswod = async ({ login, url }) => {
   return api.post('/api/password/lost', { login, url,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+}
+
+export const resetPasswod = async ({ password, key, login }) => {
+  return api.post('/api/password/reset', { password, key, login,
     headers: {
       'Content-Type': 'application/json',
     },

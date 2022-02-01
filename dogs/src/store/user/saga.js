@@ -5,7 +5,8 @@ import {
   userLogin,
   tokenValidate,
   createUserLogin,
-  forgotPasswod as forgotPasswordRequest
+  forgotPasswod as forgotPasswordRequest,
+  resetPasswod as resetPasswordRequest
 } from '../../services/user'
 
 import {
@@ -18,6 +19,8 @@ import {
   createUserSuccess,
   forgotPasswordError,
   forgotPasswordSuccess,
+  resetPasswordError,
+  resetPasswordSuccess,
 } from './actions'
 
 function* login({ payload }) {
@@ -76,6 +79,17 @@ function* forgotPassword({ payload }) {
   }
 }
 
+function* resetPassword({ payload }) {
+  const { reset } = payload
+
+  try {
+    const { data } = yield call(resetPasswordRequest, reset)
+    yield put(resetPasswordSuccess(data))
+  } catch (error) {
+    yield put(resetPasswordError('Não foi possível trocar a senha, tente novamente'))
+  }
+}
+
 export default function* rootSaga() {
   yield all([
     takeLatest(actionsTypes.LOGIN_REQUEST, login),
@@ -83,5 +97,6 @@ export default function* rootSaga() {
     takeLatest(actionsTypes.LOGOUT, logout),
     takeLatest(actionsTypes.CREATE_USER_REQUEST, createUser),
     takeLatest(actionsTypes.FORGOT_PASSWORD_REQUEST, forgotPassword),
+    takeLatest(actionsTypes.RESET_PASSWORD_REQUEST, resetPassword),
   ])
 }

@@ -12,6 +12,9 @@ export const actionsTypes = {
   FORGOT_PASSWORD_REQUEST: '@user/FORGOT_PASSWORD_REQUEST',
   FORGOT_PASSWORD_SUCCESS: '@user/FORGOT_PASSWORD_SUCCESS',
   FORGOT_PASSWORD_ERROR: '@user/FORGOT_PASSWORD_ERROR',
+  RESET_PASSWORD_REQUEST: '@user/RESET_PASSWORD_REQUEST',
+  RESET_PASSWORD_SUCCESS: '@user/RESET_PASSWORD_SUCCESS',
+  RESET_PASSWORD_ERROR: '@user/RESET_PASSWORD_ERROR',
 }
 
 const baseSelector = (state) => state.user
@@ -57,7 +60,6 @@ export function resetErrorLoading() {
 }
 
 // Forgot Password
-
 export function forgotPassword(forgot) {
   return { type: actionsTypes.FORGOT_PASSWORD_REQUEST, payload: { forgot } }
 }
@@ -68,6 +70,19 @@ export function forgotPasswordSuccess(forgot) {
 
 export function forgotPasswordError(error) {
   return { type: actionsTypes.FORGOT_PASSWORD_ERROR, payload: { error } }
+}
+
+// Reset Password
+export function resetPassword(reset) {
+  return { type: actionsTypes.RESET_PASSWORD_REQUEST, payload: { reset } }
+}
+
+export function resetPasswordSuccess(reset) {
+  return { type: actionsTypes.RESET_PASSWORD_SUCCESS, payload: { reset } }
+}
+
+export function resetPasswordError(error) {
+  return { type: actionsTypes.RESET_PASSWORD_ERROR, payload: { error } }
 }
 
 // Selectors

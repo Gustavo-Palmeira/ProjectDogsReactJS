@@ -5,6 +5,7 @@ import { actionsTypes } from './actions'
 const INITIAL_STATE = {
   user: null,
   forgotPassword: null,
+  resetPassword: null,
   error: null,
   loading: null,
 }
@@ -64,6 +65,22 @@ export default createReducer(INITIAL_STATE, {
     loading: false,
   }),
   [actionsTypes.FORGOT_PASSWORD_ERROR]: (state, { payload }) => ({
+    ...state,
+    error: payload.error,
+    loading: false,
+  }),
+  [actionsTypes.RESET_PASSWORD_REQUEST]: (state) => ({
+    ...state,
+    error: null,
+    loading: true,
+  }),
+  [actionsTypes.RESET_PASSWORD_SUCCESS]: (state, { payload }) => ({
+    ...state,
+    resetPassword: payload.reset,
+    error: null,
+    loading: false,
+  }),
+  [actionsTypes.RESET_PASSWORD_ERROR]: (state, { payload }) => ({
     ...state,
     error: payload.error,
     loading: false,

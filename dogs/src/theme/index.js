@@ -13,6 +13,7 @@ export const Theme = {
     light: '#ededed',
     dark: '#121212',
     danger: '#de2c1f',
+    success: '#278f24',
     error: '#ff3311',
 
     white: '#ffffff',
