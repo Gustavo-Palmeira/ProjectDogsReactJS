@@ -31,13 +31,15 @@ function App() {
       <GlobalStyles />
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/login/*' element={<Login />} />
-          <Route path='/account/*' element={<ProtectedRoute><User /></ProtectedRoute>} />
-          <Route path='/profile/:user' element={<UserProfile />} />
-          <Route path='*' element={<NotFound />} />
-        </Routes>
+        <main>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/login/*' element={<Login />} />
+            <Route path='/account/*' element={<ProtectedRoute><User /></ProtectedRoute>} />
+            <Route path='/profile/:user' element={<UserProfile />} />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+        </main>
         <Footer />
       </BrowserRouter>
     </Container>
