@@ -11,6 +11,7 @@ import Button from '../Forms/Button'
 import { Label, Error, Input } from '../Forms/Input/styles'
 
 import { Container } from './styles'
+import { Head } from '../Head'
 
 const LoginCreate = () => {
   const dispatch = useDispatch()
@@ -26,6 +27,7 @@ const LoginCreate = () => {
 
   return (
     <Container className=''>
+      <Head title='Crie sua conta' />
       <h1 className='title'>Cadastre-se</h1>
       <Formik
         initialValues={{ username: '', email: '', password: '' }}

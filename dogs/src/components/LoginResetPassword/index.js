@@ -8,6 +8,7 @@ import Button from '../Forms/Button'
 import { Container } from './styles'
 import { resetPasswordSchema } from '../../schemas/resetPasswordSchema'
 import { resetPassword, userDataSelector } from '../../store/user/actions'
+import { Head } from '../Head'
 
 const LoginResetPassword = () => {
   const dispatch = useDispatch()
@@ -35,6 +36,7 @@ const LoginResetPassword = () => {
 
   return (
     <Container>
+      <Head title='Trocar senha' />
       <h1 className='title'>Escolha uma nova senha</h1>
       <Formik
         initialValues={{ password: '' }}

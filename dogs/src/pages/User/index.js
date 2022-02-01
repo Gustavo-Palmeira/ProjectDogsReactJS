@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Routes, Route } from 'react-router-dom'
 import { Feed } from '../../components/Feed/Feed'
+import { Head } from '../../components/Head'
 import NotFound from '../../components/NotFound'
 import UserHeader from '../../components/User/UserHeader'
 import UserPhotoPost from '../../components/User/UserPhotoPost'
@@ -15,6 +16,7 @@ export const User = () => {
 
   return (
     <Container>
+      <Head title='Minha conta' />
       <UserHeader />
       <Routes>
         <Route path='/' element={<Feed userId={user.id} />} />

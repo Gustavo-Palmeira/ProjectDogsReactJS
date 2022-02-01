@@ -7,6 +7,7 @@ import { postPhotoSchema } from '../../../schemas/postPhotoSchema'
 import { photoDataSelector, postPhoto } from '../../../store/photo/actions'
 import { FormButton } from '../../Forms/Button/styles'
 import { Container, Preview } from './styles'
+import { Head } from '../../Head'
 
 const UserPhotoPost = () => {
   const dispatch = useDispatch()
@@ -26,47 +27,50 @@ const UserPhotoPost = () => {
 
   return (
     <Container>
-      <Formik
-        initialValues={{ name: '', weight: '', age: '', img: '' }}
-        onSubmit={handlePostPhoto}
-        validationSchema={postPhotoSchema}
-      >
-        {({ errors, touched, setFieldValue, values }) => (
-          <Form className='form'>
-            <Label htmlFor='name'>Nome</Label>
-            <Input type='text' name='name' placeholder='Digite o nome'/>
-            {errors.name && touched.name && <Error>{errors.name}</Error>}
+      <div>
+        <Head title='Poste sua foto' />
+        <Formik
+          initialValues={{ name: '', weight: '', age: '', img: '' }}
+          onSubmit={handlePostPhoto}
+          validationSchema={postPhotoSchema}
+        >
+          {({ errors, touched, setFieldValue, values }) => (
+            <Form className='form'>
+              <Label htmlFor='name'>Nome</Label>
+              <Input type='text' name='name' placeholder='Digite o nome'/>
+              {errors.name && touched.name && <Error>{errors.name}</Error>}
 
-            <Label htmlFor='weight'>Peso</Label>
-            <Input type='text' name='weight' placeholder='Digite o peso'/>
-            {errors.weight && touched.weight && <Error>{errors.weight}</Error>}
+              <Label htmlFor='weight'>Peso</Label>
+              <Input type='text' name='weight' placeholder='Digite o peso'/>
+              {errors.weight && touched.weight && <Error>{errors.weight}</Error>}
 
-            <Label htmlFor='age'>Idade</Label>
-            <Input type='text' name='age' placeholder='Digite a idade'/>
-            {errors.age && touched.age && <Error>{errors.age}</Error>}
+              <Label htmlFor='age'>Idade</Label>
+              <Input type='text' name='age' placeholder='Digite a idade'/>
+              {errors.age && touched.age && <Error>{errors.age}</Error>}
 
-            <Label htmlFor='img'>Imagem</Label>
-            <Field
-              type='file'
-              name='img'
-              id='img'
-              value={values?.img?.filename}
-              onChange={(event) => {
-                setFieldValue('img', event.target.files[0]);
-                setPreview(URL.createObjectURL(event && event.target.files[0]))
-              }}
-            />
-            {errors.img && touched.img && <Error>{errors.img}</Error>}
+              <Label htmlFor='img'>Imagem</Label>
+              <Field
+                type='file'
+                name='img'
+                id='img'
+                value={values?.img?.filename}
+                onChange={(event) => {
+                  setFieldValue('img', event.target.files[0]);
+                  setPreview(URL.createObjectURL(event && event.target.files[0]))
+                }}
+              />
+              {errors.img && touched.img && <Error>{errors.img}</Error>}
 
-            {loading ? (
-              <FormButton type='submit' disabled>Carregando...</FormButton>
-            ) : (
-              <FormButton type='submit'>Adicionar foto</FormButton>
-            )}
-            {error && <Error>{error}</Error>}
-          </Form>
-        )}
-      </Formik>
+              {loading ? (
+                <FormButton type='submit' disabled>Carregando...</FormButton>
+              ) : (
+                <FormButton type='submit'>Adicionar foto</FormButton>
+              )}
+              {error && <Error>{error}</Error>}
+            </Form>
+          )}
+        </Formik>
+      </div>
       {preview && (
         <Preview background={`url(${preview})`} />
       )}

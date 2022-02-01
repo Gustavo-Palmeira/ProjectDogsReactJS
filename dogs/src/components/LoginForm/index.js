@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Form, Formik } from 'formik'
+import { Head } from '../Head'
 import { loginSchema } from '../../schemas/loginSchema'
 import {
   login,
@@ -36,6 +37,7 @@ const LoginForm = () => {
   return (
     <Container>
       <h1 className='title'>Login</h1>
+      <Head title='Login' />
       <Formik
         initialValues={{ username: '', password: '' }}
         onSubmit={handleLogin}

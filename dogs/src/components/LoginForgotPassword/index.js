@@ -7,6 +7,7 @@ import Button from '../Forms/Button'
 import { Container, Success } from './styles'
 import { forgotPassword, userDataSelector } from '../../store/user/actions'
 import { forgotPasswordSchema } from '../../schemas/forgotPasswordSchema'
+import { Head } from '../Head'
 
 const LoginForgotPassword = () => {
   const dispatch = useDispatch()
@@ -21,6 +22,7 @@ const LoginForgotPassword = () => {
 
   return (
     <Container>
+      <Head title='Perdeu a senha?' />
       <h1 className='title'>Perdeu a senha?</h1>
       {emailSent
         ? <Success>E-mail enviado</Success>
