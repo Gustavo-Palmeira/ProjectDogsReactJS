@@ -12,6 +12,10 @@ export const Container = styled.section`
   #img {
     margin-bottom: 1rem;
   }
+
+  @media(max-width: 40rem) {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const Preview = styled.div`
@@ -25,5 +29,13 @@ export const Preview = styled.div`
     content: '';
     display: block;
     height: 0px;
+  }
+
+  @media(max-width: 40rem) {
+    margin: 0;
+
+    &::after {
+      height: 400px;
+    }
   }
 `

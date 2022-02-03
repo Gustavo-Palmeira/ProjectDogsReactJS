@@ -26,6 +26,7 @@ const UserStatusCharts = ({ stats }) => {
       <Error>Nenhuma estatística encontrada</Error>
     </Container>
   )
+
   return (
     <Container>
       <Total>

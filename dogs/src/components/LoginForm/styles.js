@@ -72,7 +72,7 @@ export const Input = styled(FastField)`
 `
 
 export const Register = styled.div`
-  margin-top: 4rem;
+  margin: 4rem 0;
 
   p {
     margin: 2rem 0;

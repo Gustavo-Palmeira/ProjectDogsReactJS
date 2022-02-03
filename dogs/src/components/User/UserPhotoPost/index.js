@@ -56,7 +56,7 @@ const UserPhotoPost = () => {
                 value={values?.img?.filename}
                 onChange={(event) => {
                   setFieldValue('img', event.target.files[0]);
-                  setPreview(URL.createObjectURL(event && event.target.files[0]))
+                  setPreview(event.target.files.length !== 0 ? URL.createObjectURL(event.target.files[0]) : null)
                 }}
               />
               {errors.img && touched.img && <Error>{errors.img}</Error>}
